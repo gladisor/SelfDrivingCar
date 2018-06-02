@@ -48,7 +48,11 @@ void setup()
 
 void loop()
 {
-    
+  while (distance > obstical)
+  {
+    DriveStraight();
+  }
+  TurnLeft();
 }
 
 void DriveStraight()
@@ -69,7 +73,8 @@ void TurnLeft()
 {
   digitalWrite(LeftMotor, LOW);
   digitalWrite(RightMotor, HIGH);
-    delayMicroseconds(500);
+  delayMicroseconds(500);
+  Stop();
 }
 
 void Stop()
