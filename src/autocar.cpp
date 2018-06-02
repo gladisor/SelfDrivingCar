@@ -42,13 +42,7 @@ void loop()
     }
   }
 }
-/*void loop() 
-{
-  DriveStraight()
-    delayMicroseconds(500);
-  Stop()
-    delayMicroseconds(500);
-}*/
+
 void DriveStraight()
 {
   digitalWrite(LeftMotor, HIGH);
