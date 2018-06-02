@@ -1,3 +1,5 @@
+#define TRISTANS_USELESS_DEFINE 1
+
 int LeftMotor = 12;
 int RightMotor = 13;
 int ECPin = 1;
