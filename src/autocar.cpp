@@ -4,6 +4,7 @@ int LeftMotor = 12;
 int RightMotor = 13;
 int ECPin = 1;
 int TrigPin = 2;
+int obstical = 30;
 
 void setup()
 {
@@ -14,7 +15,7 @@ void setup()
   pinMode(TrigPin, OUTPUT);
 }
 
-void loop()
+/*void loop()
 {
   distance();
   if (distance > 30)
@@ -43,14 +44,17 @@ void loop()
       }
     }
   }
+}*/
+
+void loop()
+{
+    
 }
 
 void DriveStraight()
 {
   digitalWrite(LeftMotor, HIGH);
   digitalWrite(RightMotor, HIGH);
-  delayMicroseconds(500);
-  Stop();
 }
 
 void TurnRight()
@@ -65,6 +69,7 @@ void TurnLeft()
 {
   digitalWrite(LeftMotor, LOW);
   digitalWrite(RightMotor, HIGH);
+    delayMicroseconds(500);
 }
 
 void Stop()
