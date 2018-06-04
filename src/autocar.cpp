@@ -1,86 +1,62 @@
-#define TRISTANS_USELESS_DEFINE 1
+int enA = 10;
+int in1 = 9;
+int in2 = 8;
 
-int LeftMotor = 12;
-int RightMotor = 13;
-int ECPin = 1;
-int TrigPin = 2;
-int obstical = 30;
+int enB = 5;
+int in3 = 7;
+int in4 = 6;
+
+int ECPin = 2;
+int TrigPin = 3;
 
 void setup()
 {
   Serial.begin(9600);
-  pinMode(LeftMotor, INPUT);
-  pinMode(RightMotor, INPUT);
+  pinMode(enA, OUTPUT);
+  pinMode(enB, OUTPUT);
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+  pinMode(in3, OUTPUT);
+  pinMode(in4,OUTPUT);
   pinMode(ECPin, INPUT);
   pinMode(TrigPin, OUTPUT);
 }
 
-/*void loop()
+void loop()
 {
-  distance();
-  if (distance > 30)
+  if (distance() > 30)
   {
     DriveStraight();
   }
   else
   {
-    Stop();
-    TurnRight();
-    if (distance > 30)
-    {
-      DriveStraight();
-    }
-    else
-    {
-      TurnLeft();
-      TurnLeft();
-      if (distance > 30)
-      {
-        DriveStraight();
-      }
-      else
-      {
-        Stop();
-      }
-    }
+    TurnLeft();
   }
-}*/
-
-void loop()
-{
-  while (distance > obstical)
-  {
-    DriveStraight();
-  }
-  TurnLeft();
 }
 
 void DriveStraight()
 {
-  digitalWrite(LeftMotor, HIGH);
-  digitalWrite(RightMotor, HIGH);
-}
-
-void TurnRight()
-{
-  digitalWrite(LeftMotor, HIGH);
-  digitalWrite(RightMotor, LOW);
-  delayMicroseconds(500);
-  Stop();
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, HIGH);
+  analogWrite(enA, 200);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, HIGH);
+  analogWrite(enB, 200);
 }
 
 void TurnLeft()
 {
-  digitalWrite(LeftMotor, LOW);
-  digitalWrite(RightMotor, HIGH);
-  delayMicroseconds(500);
-  Stop();
+
 }
 
 void Stop()
 {
-  digitalWrite(LeftMotor, LOW);
-  digitalWrite(RightMotor, LOW);
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);
+  analogWrite(enA, 0);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, LOW);
+  analogWrite(enB, 0);
 }
 
 long distance()
@@ -91,7 +67,7 @@ long distance()
   digitalWrite(TrigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(TrigPin, LOW);
-  duration = pulseIn(ECPin, LOW);
+  duration = pulseIn(ECPin, HIGH);
   distance = (duration/2)/29.1;
   return distance;
 }
