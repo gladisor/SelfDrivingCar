@@ -1,11 +1,12 @@
+// motor 1
 int enA = 10;
 int in1 = 9;
 int in2 = 8;
-
+//motor 2
 int enB = 5;
 int in3 = 7;
 int in4 = 6;
-
+// ultrasonic sensor
 int ECPin = 2;
 int TrigPin = 3;
 
